@@ -64,7 +64,7 @@ values
   ('Curve Ball','Valle Bavona','Switzerland','Giuliano Cameroni','Mar 2025','8C+',57000),
   ('Last Line of Defense','Curry Village Boulders','USA','David Fitzgerald','25th Apr 2025','8C+',58000),
   ('Permanent Midnight Low','Fionnay','Switzerland','Clément Lechaptois','14th May 2025','8C+',59000),
-  ('Spray and Pray','Dihedral Boulders',null,'Thilo Schröter','Aug 2025','8C+',60000),
+  ('Spray and Pray','Rocklands','South Africa','Thilo Schröter','Aug 2025','8C+',60000),
   ('The Trident','Trewethet Cliff North','UK','Solly Kemball-Dorey','20th Aug 2025','8C+',61000),
   ('Pôr do Sol','Peninha','Portugal','Will Bosi','5th Jan 2026','8C+',62000),
   ('Full Gem','Chironico','Switzerland','Nicolai Užnik','30th Jan 2026','8C+',63000),

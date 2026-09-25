@@ -59,10 +59,9 @@ rather than to add a login.
 
 The boulder list comes from
 [climbing-history.org](https://climbing-history.org/hardest?discipline=boulder&grade=8C%2B)
-(entries #16–#85 of their hardest-boulders ranking). Two entries have no country
+(entries #16–#85 of their hardest-boulders ranking). One entry has no country
 recorded because the crag alone did not settle it — `Maxwell's Demon Low` at
-Secret Garden and `Spray and Pray` at Dihedral Boulders. Fix them in the app if
-you know.
+Secret Garden.
 
 Corrections to the *underlying* facts belong upstream at
 `corrections@climbing-history.org`, not here. Please do not scrape that site;
