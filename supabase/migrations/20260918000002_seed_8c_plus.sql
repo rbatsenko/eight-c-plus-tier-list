@@ -60,7 +60,7 @@ values
   ('Tsunami','Lofoten','Norway','Thilo Schröter','1st Oct 2024','8C+',53000),
   ('Sword of Damocles','Mount Evans','USA','Austin Purdy','26th Oct 2024','8C+',54000),
   ('Deep Fake','Brione','Switzerland','Nathan Phillips','3rd Dec 2024','8C+',55000),
-  ('Obsidan','Scharfenstein','Germany','Stefan Hochbaum','8th Feb 2025','8C+',56000),
+  ('Obsidian','Scharfenstein','Germany','Stefan Hochbaum','8th Feb 2025','8C+',56000),
   ('Curve Ball','Valle Bavona','Switzerland','Giuliano Cameroni','Mar 2025','8C+',57000),
   ('Last Line of Defense','Curry Village Boulders','USA','David Fitzgerald','25th Apr 2025','8C+',58000),
   ('Permanent Midnight Low','Fionnay','Switzerland','Clément Lechaptois','14th May 2025','8C+',59000),
