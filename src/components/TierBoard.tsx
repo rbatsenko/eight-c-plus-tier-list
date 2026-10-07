@@ -289,6 +289,35 @@ export default function TierBoard() {
     [grouped, persistMove],
   );
 
+  const toggleDiscussed = useCallback(
+    async (boulder: Boulder) => {
+      if (!supabase) return;
+      const discussed = !boulder.discussed;
+      setBoulders((prev) =>
+        prev.map((b) => (b.id === boulder.id ? { ...b, discussed } : b)),
+      );
+      const { error } = await supabase
+        .from("tierlist_boulders")
+        .update({ discussed })
+        .eq("id", boulder.id);
+      if (error) {
+        setBoulders((prev) =>
+          prev.map((b) =>
+            b.id === boulder.id ? { ...b, discussed: boulder.discussed } : b,
+          ),
+        );
+        setLoadError(error.message);
+        return;
+      }
+      await logEdit({
+        boulder_id: boulder.id,
+        boulder_name: boulder.name,
+        action: discussed ? "discussed" : "undiscussed",
+      });
+    },
+    [logEdit],
+  );
+
   async function addBoulder(form: NewBoulder): Promise<string | null> {
     if (!supabase) return "Not connected to the database.";
     const { data, error } = await supabase
@@ -390,6 +419,7 @@ export default function TierBoard() {
   const activeBoulder = activeId ? boulders.find((b) => b.id === activeId) : undefined;
   const openBoulder = openId ? boulders.find((b) => b.id === openId) : undefined;
   const ranked = boulders.filter((b) => b.tier !== null).length;
+  const discussedCount = boulders.filter((b) => b.discussed).length;
 
   if (!isConfigured) {
     return (
@@ -418,7 +448,8 @@ export default function TierBoard() {
             <p className="mt-1 text-xs text-zinc-500 sm:text-sm">
               Every 8C+ boulder in the world. Drag them, paste videos, argue.{" "}
               <span className="text-zinc-600">
-                Anyone can edit — {ranked}/{boulders.length} ranked.
+                Anyone can edit — {ranked}/{boulders.length} ranked
+                {discussedCount > 0 ? `, ${discussedCount} 🎙 discussed` : ""}.
               </span>
             </p>
           </div>
@@ -540,6 +571,7 @@ export default function TierBoard() {
             .filter((v) => v.boulder_id === openBoulder.id)
             .sort((a, b) => a.created_at.localeCompare(b.created_at))}
           onAssign={(t) => assignTier(openBoulder, t)}
+          onToggleDiscussed={() => void toggleDiscussed(openBoulder)}
           onAddVideo={(url, label) => addVideo(openBoulder.id, url, label)}
           onRemoveVideo={removeVideo}
           onClose={() => setOpenId(null)}

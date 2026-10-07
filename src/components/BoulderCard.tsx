@@ -41,13 +41,21 @@ export function CardBody({
   return (
     <div
       className={`w-40 rounded-lg border border-rock-600 bg-rock-800 px-2.5 py-2 text-left shadow-lg shadow-black/40 transition-colors hover:border-rock-500 sm:w-44 ${
-        dragging ? "rotate-2 ring-2 ring-amber-400/70" : ""
-      }`}
+        boulder.discussed && !dragging ? "opacity-75" : ""
+      } ${dragging ? "rotate-2 ring-2 ring-amber-400/70" : ""}`}
     >
       <div className="flex items-start gap-1">
         <p className="min-w-0 flex-1 text-[13px] font-semibold leading-snug text-zinc-50">
           {boulder.name}
         </p>
+        {boulder.discussed ? (
+          <span
+            title="Discussed on the podcast"
+            className="shrink-0 rounded bg-teal-400/15 px-1 text-[10px] leading-4 text-teal-300"
+          >
+            🎙
+          </span>
+        ) : null}
         {videoCount > 0 ? (
           <span
             title={`${videoCount} video${videoCount === 1 ? "" : "s"}`}
@@ -91,7 +99,7 @@ export default function BoulderCard({
       ref={setNodeRef}
       style={{ transform: CSS.Translate.toString(transform), transition }}
       onClick={onOpen}
-      aria-label={`${boulder.name}. Open details, videos and tier.`}
+      aria-label={`${boulder.name}${boulder.discussed ? ", discussed on the podcast" : ""}. Open details, videos and tier.`}
       className={`dnd-draggable cursor-grab rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 active:cursor-grabbing ${
         isDragging ? "opacity-30" : ""
       }`}
