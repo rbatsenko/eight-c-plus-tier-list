@@ -8,7 +8,7 @@ any other table in that project.
 
 | Table               | Purpose                                                |
 | ------------------- | ------------------------------------------------------ |
-| `tierlist_boulders` | One row per boulder. `tier = null` means unranked.      |
+| `tierlist_boulders` | One row per boulder. `tier = null` means unranked; `discussed` marks boulders already covered on the podcast. |
 | `tierlist_videos`   | Beta links people paste while arguing. Many per boulder.|
 | `tierlist_edits`    | Append-only audit trail shown in the Activity panel.    |
 

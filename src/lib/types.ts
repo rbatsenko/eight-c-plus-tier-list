@@ -10,6 +10,8 @@ export type Boulder = {
   grade: string;
   /** null means the boulder is still in the unranked pool. */
   tier: TierId | null;
+  /** Already covered on the podcast. Purely a marker; it does not affect ranking. */
+  discussed: boolean;
   position: number;
   created_at: string;
   updated_at: string;
@@ -28,7 +30,7 @@ export type Edit = {
   id: number;
   boulder_id: string | null;
   boulder_name: string;
-  action: "add" | "move" | "remove" | "edit" | "video";
+  action: "add" | "move" | "remove" | "edit" | "video" | "discussed" | "undiscussed";
   from_tier: string | null;
   to_tier: string | null;
   editor: string | null;

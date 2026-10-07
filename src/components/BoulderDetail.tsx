@@ -9,6 +9,7 @@ export default function BoulderDetail({
   boulder,
   videos,
   onAssign,
+  onToggleDiscussed,
   onAddVideo,
   onRemoveVideo,
   onClose,
@@ -16,6 +17,7 @@ export default function BoulderDetail({
   boulder: Boulder;
   videos: Video[];
   onAssign: (tier: TierId | null) => void;
+  onToggleDiscussed: () => void;
   onAddVideo: (url: string, label: string) => Promise<string | null>;
   onRemoveVideo: (video: Video) => Promise<string | null>;
   onClose: () => void;
@@ -118,6 +120,31 @@ export default function BoulderDetail({
               Unranked
             </button>
           </div>
+        </section>
+
+        <section className="border-t border-rock-800 px-5 py-4">
+          <h3 className="text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
+            Podcast
+          </h3>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={boulder.discussed}
+            onClick={onToggleDiscussed}
+            className={`mt-2 flex w-full items-center gap-2 rounded-lg border px-3 py-2 text-left text-xs transition ${
+              boulder.discussed
+                ? "border-teal-400/50 bg-teal-400/10 text-teal-200"
+                : "border-rock-700 bg-rock-850 text-zinc-300 hover:bg-rock-800"
+            }`}
+          >
+            <span aria-hidden>🎙</span>
+            <span className="flex-1">
+              {boulder.discussed ? "Discussed on the podcast" : "Not discussed yet"}
+            </span>
+            <span className="shrink-0 text-[11px] text-zinc-500">
+              {boulder.discussed ? "Click to unmark" : "Click to mark as discussed"}
+            </span>
+          </button>
         </section>
 
         <section className="border-t border-rock-800 px-5 py-4">

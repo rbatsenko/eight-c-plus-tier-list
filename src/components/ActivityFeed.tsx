@@ -18,6 +18,10 @@ function describe(e: Edit): string {
       return `removed ${e.boulder_name}`;
     case "move":
       return `moved ${e.boulder_name} to ${e.to_tier ?? "Unranked"}`;
+    case "discussed":
+      return `marked ${e.boulder_name} as discussed on the podcast`;
+    case "undiscussed":
+      return `unmarked ${e.boulder_name} as discussed`;
     default:
       return `edited ${e.boulder_name}`;
   }
